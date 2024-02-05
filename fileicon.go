@@ -7,15 +7,15 @@ import (
 
 var ErrNoExtension = errors.New("unknown")
 
-func FileIcon(filePath string) ([]byte, error) {
+func FileIcon(filePath string) string {
 	ext := filepath.Ext(filePath)
 	if ext == "" {
-		return nil, ErrNoExtension
+		return VanilaIcon("")
 	}
 	ext = ext[1:]
 	data := IconData[ext]
 	if data == "" {
-		return nil, ErrNoExtension
+		return VanilaIcon(ext)
 	}
-	return []byte(data), nil
+	return data
 }
