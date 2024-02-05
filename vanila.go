@@ -119,9 +119,12 @@ xmlns:svg="http://www.w3.org/2000/svg">
 // 4 - 22
 // 5 - 17
 func VanilaIcon(ext string) string {
-	size := 90 / len(ext)
-	if size > 45 {
-		size = 45
+	size := 10
+	if len(ext) > 0 {
+		size := 90 / len(ext)
+		if size > 45 {
+			size = 45
+		}
 	}
 	return fmt.Sprintf(svgData, size, strings.ToUpper(ext))
 }
