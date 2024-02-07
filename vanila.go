@@ -2,10 +2,11 @@ package fileicon
 
 import (
 	"fmt"
+	"log"
 	"strings"
 )
 
-var svgData = `<svg
+var _svgData = `<svg
 version="1.1"
 id="svg1"
 width="96"
@@ -111,20 +112,27 @@ xmlns:svg="http://www.w3.org/2000/svg">
        transform="matrix(1.3333333,0,0,-1.3333333,0,128)"
        clip-path="url(#clipPath6)" />
   </g>
-    <text x="16" y="95"  font-size="%d" style="fill:white;font-weight:bold;font-family:Arial">%s</text>
+    
 
 </svg>`
+
+var svgData = `<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><style>.st0{fill:#999}</style><path class="st0" d="M0 2v92c0 1.1.9 2 2 2h68c1.1 0 2-.9 2-2V28H50c-1.1 0-2-.9-2-2V0H2C.9 0 0 .9 0 2z"/><path class="st0" d="M71.9 24c-.1-.4-.2-.7-.4-1L52 1.2V24h19.9z"/><path d="M6 41h60v49H6zM9 6.4h3.6l3.6" fill="#fff"/><path class="st0" d="M14"/><text x="16" y="75"  font-size="%d" style="fill:black;font-weight:bold;font-family:Arial">%s</text></svg>`
 
 // 3 - 30
 // 4 - 22
 // 5 - 17
 func VanilaIcon(ext string) string {
+	log.Println(len(ext))
+	log.Println(ext)
 	size := 10
 	if len(ext) > 0 {
-		size := 90 / len(ext)
+		size = 56 / len(ext)
 		if size > 45 {
 			size = 45
 		}
 	}
+	log.Println(len(ext))
+	log.Println(ext)
+	log.Println(size)
 	return fmt.Sprintf(svgData, size, strings.ToUpper(ext))
 }
